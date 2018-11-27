@@ -62,6 +62,15 @@ app.get('/navBloodMeasure', function(req, res){
     res.end();
 });
 
+app.get('/directions', function(req, res){
+  io.emit('message', {route: 'directions', data:'testmsg'});
+  var resObject = {
+    directions: "ping from blood pressure directions"
+  };
+  res.write(JSON.stringify(resObject));
+  res.end();
+});
+
 io.on('connection', function(socket){
     console.log("new socket connection");
     // var mymessage = {
